@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+        $(function () {
+                window.setInterval(function () {
+                        loadnewmetar()
+                        loadnewad()
+                        loadnewdaynight()
+                        loadnewvmcimc()
+                        loadnewrand()
+                        loadnewsunset()
+                }, 3 * 1000)
+
+                function loadnewmetar() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+
+                }
+                function loadnewad() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+
+                }
+                function loadnewdaynight() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+                }
+                function loadnewvmcimc() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+                }
+                function loadnewrand() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+                }
+                function loadnewsunset() {
+                        $.ajax({
+                                url: "/updatemetar",
+                                type: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                        $(update).replaceWith(data)
+                                }
+
+
+                        });
+
+                }
+        });
+
+
+</script>
+
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sunset</title>
+        <script>
+                function startTime() {
+                        var today = new Date();
+                        var h = today.getHours();
+                        var m = today.getMinutes();
+                        var s = today.getSeconds();
+                        m = checkTime(m);
+                        s = checkTime(s);
+                        document.getElementById('txt').innerHTML =
+                                h + ":" + m + ":" + s;
+                        var t = setTimeout(startTime, 1000);
+                }
+                function checkTime(i) {
+                        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+                        return i;
+                }
+        </script>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body onload="startTime()">
+        <div id="txt"></div>
+        <div id="update">
+                <h1>{{aerodrome}}</h1>
+                <h2>{{report_metar}}</h2>
+                <h2>{{day_night}}</h2>
+                <h2>{{vmc_imc}}</h2>
+                <h2>{{random_dec}}</h2>
+                <h2>{{sunset}}</h2>
+        </div>
+        <div>
+                <h3>Sunrise at: {{sunrise}}</h3>
+        </div>
+        <div>
+                <h3>Sunset at: {{sunset}}</h3>
+        </div>
+</body>
+
+</html>
